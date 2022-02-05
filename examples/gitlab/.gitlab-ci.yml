@@ -1,0 +1,18 @@
+stages:
+  - lint
+
+checkpatch:
+  stage: lint
+  tags:
+    - linux
+  script:
+    - |
+      find -name "*.patch" -printf '%P\n' | \
+      xargs checkpatch-junit -c tests/checkpatch.pl --checkpatch-args=--no-tree --ignore-check | \
+      tee checkpatch.xml
+  artifacts:
+    paths:
+      - checkpatch.xml
+    reports:
+      junit: checkpatch.xml
+    when: always
