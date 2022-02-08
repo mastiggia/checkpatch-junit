@@ -1,12 +1,14 @@
 import pathlib
 from setuptools import setup, find_packages
+import versioneer
 
 here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / "README.md").read_text(encoding="utf-8")
 
 setup(
     name="checkpatch-junit",
-    version="0.0.1",
+    version=versioneer.get_version(),
+    cmdclass=versioneer.get_cmdclass(),
     description="Provide JUnit output to Linux checkpatch.pl script",
     long_description=long_description,
     long_description_content_type="text/markdown",

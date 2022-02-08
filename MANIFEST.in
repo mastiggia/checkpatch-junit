@@ -1,0 +1,2 @@
+include versioneer.py
+include src/checkpatch_junit/_version.py

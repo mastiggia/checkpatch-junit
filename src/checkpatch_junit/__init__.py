@@ -8,6 +8,11 @@ import subprocess
 
 import junit_xml
 
+from ._version import get_versions
+
+__version__ = get_versions()["version"]
+del get_versions
+
 
 def validate_patch(path):
     """
@@ -138,6 +143,12 @@ def main():
         help="patch to analyze with checkpatch.pl",
         metavar="FILE",
         dest="patches",
+    )
+    parser.add_argument(
+        "-V",
+        "--version",
+        action="version",
+        version=f"%(prog)s {__version__}",
     )
     parser.add_argument(
         "-c",
