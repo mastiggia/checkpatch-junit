@@ -5,6 +5,7 @@ import argparse
 import os.path
 import re
 import subprocess
+import sys
 
 import junit_xml
 
@@ -124,11 +125,11 @@ def checkpatch_to_junit(args):
         total_errors += errors
     test_suite = junit_xml.TestSuite("checkpatch", test_cases)
     with args.outfile as outfile:
-        outfile.write(junit_xml.TestSuite.to_xml_string([test_suite]))
+        junit_xml.to_xml_report_file(outfile, [test_suite])
     return total_errors != 0
 
 
-def main():
+def main(argv=None):
     """
     Main function
     """
@@ -189,7 +190,9 @@ def main():
         help="ignore checkpatch.pl warning messages",
         dest="ignore_warning",
     )
-    args = parser.parse_args()
+    if argv is None:
+        argv = sys.argv[1:]
+    args = parser.parse_args(argv)
     return checkpatch_to_junit(args)
 
 
