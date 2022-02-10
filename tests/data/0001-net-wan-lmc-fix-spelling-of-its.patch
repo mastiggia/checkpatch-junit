@@ -1,0 +1,33 @@
+From 24d8a9001a91716d9399d1606b32ec27e9f6d125 Mon Sep 17 00:00:00 2001
+From: Randy Dunlap <rdunlap@infradead.org>
+Date: Wed, 22 Dec 2021 22:26:11 -0800
+Subject: [PATCH] net: wan/lmc: fix spelling of "its"
+
+Use the possessive "its" instead of the contraction of "it is" ("it's")
+in user messages.
+
+Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
+Cc: Krzysztof Halasa <khc@pm.waw.pl>
+Cc: "David S. Miller" <davem@davemloft.net>
+Cc: Jakub Kicinski <kuba@kernel.org>
+Signed-off-by: David S. Miller <davem@davemloft.net>
+---
+ drivers/net/wan/lmc/lmc_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/wan/lmc/lmc_main.c b/drivers/net/wan/lmc/lmc_main.c
+index ed687bf6ec47..6a142dc85c37 100644
+--- a/drivers/net/wan/lmc/lmc_main.c
++++ b/drivers/net/wan/lmc/lmc_main.c
+@@ -550,7 +550,7 @@ static int lmc_siocdevprivate(struct net_device *dev, struct ifreq *ifr,
+                            (timeout-- > 0))
+                         cpu_relax();
+ 
+-                    printk(KERN_DEBUG "%s: Waited %d for the Xilinx to clear it's memory\n", dev->name, 500000-timeout);
++                    printk(KERN_DEBUG "%s: Waited %d for the Xilinx to clear its memory\n", dev->name, 500000-timeout);
+ 
+                     for(pos = 0; pos < xc.len; pos++){
+                         switch(data[pos]){
+-- 
+2.34.1
+
