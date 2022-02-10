@@ -1,10 +1,11 @@
 # checkpatch-junit
 
 [![Python Version](https://img.shields.io/badge/python-3.x-blue?style=flat&logo=python)](#)
+[![PyPI](https://img.shields.io/pypi/v/checkpatch-junit?color=blue)](https://pypi.org/project/checkpatch-junit/)
 [![OS](https://img.shields.io/badge/OS-GNU%2FLinux-red?style=flat&logo=linux)](#)
 [![License](https://img.shields.io/github/license/mastiggia/checkpatch-junit?style=flat&logo=github)](#)
-[![PyPI](https://img.shields.io/pypi/v/checkpatch-junit?color=blue)](https://pypi.org/project/checkpatch-junit/)
 [![CodeStyle](https://img.shields.io/badge/code%20style-black-000000.svg)](#)
+[![Test](https://github.com/mastiggia/checkpatch-junit/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/mastiggia/checkpatch-junit/actions/workflows/test.yml)
 
 A Python program to generate JUnit XML test result from Linux script
 checkpatch.pl output.
@@ -30,7 +31,7 @@ python setup.py install
 ## Usage
 
 ```sh
-checkpatch-junit [-h] [-c checkpatch.pl] [--checkpatch-args arg1,arg2,...]
+checkpatch-junit [-h] [-V] [-c checkpatch.pl] [--checkpatch-args arg1,arg2,...]
                  [-o outfile.xml] [--ignore-check] [--ignore-warning]
                  FILE [FILE ...]
 
@@ -41,6 +42,7 @@ positional arguments:
 
 options:
   -h, --help            show this help message and exit
+  -V, --version         show program's version number and exit
   -c checkpatch.pl      path to the checkpatch.pl script to use
   --checkpatch-args arg1,arg2,...
                         extra arguments to pass to checkpatch.pl, separated by
@@ -63,3 +65,17 @@ checkpatch-junit -c scripts/checkpatch.pl --checkpatch-args=--no-tree *.patch -o
 The following screenshot shows a GitLab merge request which fixes 2 patches:
 
 ![MergeRequest](https://raw.githubusercontent.com/mastiggia/checkpatch-junit/main/examples/gitlab/merge-request.jpg)
+
+## Contribute
+
+A development environment, using virtual environment, can be prepared with the
+following commands:
+
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+
+pip install -r requirements-dev.txt
+pre-commit install
+pip install -e .
+```
