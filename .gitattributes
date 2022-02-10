@@ -1,1 +1,4 @@
 src/checkpatch_junit/_version.py export-subst
+
+# Exclude checkpatch.pl from linguist stats
+tests/checkpatch.pl linguist-vendored
